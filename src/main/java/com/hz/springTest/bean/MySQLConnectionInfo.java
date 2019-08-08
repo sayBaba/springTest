@@ -4,7 +4,6 @@ package com.hz.springTest.bean;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
-@Component
 public class MySQLConnectionInfo {
 
     @Value("#{configProperties['mysql.url']}")

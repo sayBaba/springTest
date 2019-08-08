@@ -18,7 +18,13 @@
     <context:component-scan base-package="com.hz.springTest.*">
     </context:component-scan>
 
-    <bean id="person" class="com.hz.springTest.bean.Person">
+<!--
+    <bean class="org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor"/>
+-->
+
+
+
+<!--    <bean id="person" class="com.hz.springTest.bean.Person">
         <constructor-arg name="userName" value="小张"></constructor-arg>
         <constructor-arg name="password" value="123"></constructor-arg>
     </bean>
@@ -81,6 +87,6 @@
 
     <bean id="propertyConfigurer" class="org.springframework.beans.factory.config.PreferencesPlaceholderConfigurer">
         <property name="properties" ref="configProperties" />
-    </bean>
+    </bean>-->
 
 </beans>
