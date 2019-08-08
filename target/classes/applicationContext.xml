@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:mvc="http://www.springframework.org/schema/mvc" xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+              http://www.springframework.org/schema/beans/spring-beans.xsd
+              http://www.springframework.org/schema/mvc
+              http://www.springframework.org/schema/mvc/spring-mvc.xsd
+              http://www.springframework.org/schema/context
+              http://www.springframework.org/schema/context/spring-context.xsd">
+
+<!--    <bean id="person" class="com.hz.springTest.bean.Person">
+        <property name="userName" value="小张"></property>
+        <property name="password" value="123"></property>
+    </bean>-->
+
+    <context:annotation-config />
+    <context:component-scan base-package="com.hz.springTest.*">
+    </context:component-scan>
+
+    <bean id="person" class="com.hz.springTest.bean.Person">
+        <constructor-arg name="userName" value="小张"></constructor-arg>
+        <constructor-arg name="password" value="123"></constructor-arg>
+    </bean>
+
+
+    <bean id="sayHelp" class="com.hz.springTest.SayHelp" scope="prototype">
+        <property name="hello" ref="sayEnglish"></property>
+    </bean>
+
+    <bean id="sayChinese" class="com.hz.springTest.SayChinese"></bean>
+    <bean id="sayEnglish" class="com.hz.springTest.SayEnglish"></bean>
+
+
+    <bean id="customer" class="com.hz.springTest.bean.Customer" scope="singleton">
+        <property name="empList">
+
+            <list>
+                <ref bean="empList1"></ref>
+                <ref bean="empList2"></ref>
+            </list>
+        </property>
+
+        <property name="empMap">
+            <map>
+                <entry key="1" value-ref="empMap1"></entry>
+                <entry key="2" value-ref="empMap2"></entry>
+            </map>
+        </property>
+
+    </bean>
+
+    <bean id = "empMap1" class="com.hz.springTest.bean.Dept">
+        <property name="name" value="xiu张"></property>
+        <property name="password" value="123"></property>
+    </bean>
+
+    <bean id="empMap2" class="com.hz.springTest.bean.Dept">
+        <property name="name" value="小张张"></property>
+        <property name="password" value="456"></property>
+    </bean>
+
+    <bean id="empList1" class="com.hz.springTest.bean.Dept">
+        <property name="name" value="xiu张"></property>
+        <property name="password" value="123"></property>
+    </bean>
+
+    <bean id="empList2" class="com.hz.springTest.bean.Dept">
+        <property name="name" value="小张张"></property>
+        <property name="password" value="456"></property>
+    </bean>
+
+    <bean id="configProperties" class="org.springframework.beans.factory.config.PropertiesFactoryBean">
+        <property name="locations">
+            <list>
+                <value>classpath*:application.properties</value>
+            </list>
+        </property>
+    </bean>
+
+
+    <bean id="propertyConfigurer" class="org.springframework.beans.factory.config.PreferencesPlaceholderConfigurer">
+        <property name="properties" ref="configProperties" />
+    </bean>
+
+</beans>
