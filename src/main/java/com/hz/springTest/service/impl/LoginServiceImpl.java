@@ -12,9 +12,9 @@ public class LoginServiceImpl implements LoginService {
 
     /**
      *
-     */
-    @Resource
-    private UserMapper userMapper;
+//     */
+//    @Resource
+//    private UserMapper userMapper;
 
     @Override
     public void queryInfo() {
